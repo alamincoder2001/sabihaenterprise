@@ -879,7 +879,7 @@
 				this.vatPercent = isNaN(this.vatPercent) || this.vatPercent == '' ? 0 : this.vatPercent;
 				this.purchase.discount = isNaN(this.purchase.discount) || this.purchase.discount == '' ? 0 : this.purchase.discount;
 				this.purchase.freight = isNaN(this.purchase.freight) || this.purchase.freight == '' ? 0 : this.purchase.freight;
-				this.purchase.paid = isNaN(this.purchase.paid) || this.purchase.paid == '' ? 0 : this.purchase.paid;
+				// this.purchase.paid = isNaN(this.purchase.paid) || this.purchase.paid == '' ? 0 : this.purchase.paid;
 
 				this.purchase.total = ((parseFloat(this.purchase.subTotal) + parseFloat(this.purchase.vat) + parseFloat(this.purchase.freight)) - parseFloat(this.purchase.discount)).toFixed(2);
 				if (this.selectedSupplier.Supplier_Type == 'G') {

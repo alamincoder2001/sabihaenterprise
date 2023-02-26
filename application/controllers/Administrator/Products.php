@@ -236,10 +236,12 @@ class Products extends CI_Controller
                 p.*,
                 concat(p.Product_Name, ' - ', p.Product_Code) as display_text,
                 pc.ProductCategory_Name,
+                psc.name as subcategoryName,
                 br.brand_name,
                 u.Unit_Name
             from tbl_product p
             left join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
+            left join tbl_subcategory psc on psc.id = p.subcategory_id
             left join tbl_brand br on br.brand_SiNo = p.brand
             left join tbl_unit u on u.Unit_SlNo = p.Unit_ID
             where p.status = 'a'

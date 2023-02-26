@@ -18,6 +18,7 @@
                                 <th>Product Id</th>
                                 <th>Product Name</th>
                                 <th>Category</th>
+                                <th>Sub Category</th>
                                 <th>Sale Price</th>
                             </tr>
                         </thead>
@@ -30,6 +31,7 @@
                                 <td>{{ product.Product_Code }}</td>
                                 <td>{{ product.Product_Name }}</td>
                                 <td>{{ product.ProductCategory_Name }}</td>
+                                <td>{{ product.subcategoryName }}</td>
                                 <td style="text-align:right;">{{ product.Product_SellingPrice }}</td>
                             </tr>
                         </tbody>

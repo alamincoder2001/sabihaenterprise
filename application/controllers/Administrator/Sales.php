@@ -479,10 +479,12 @@ class Sales extends CI_Controller
                     p.Product_Code,
                     p.Product_Name,
                     pc.ProductCategory_Name,
+                    psc.name as subcategoryName,
                     u.Unit_Name
                 from tbl_saledetails sd
                 join tbl_product p on p.Product_SlNo = sd.Product_IDNo
                 join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
+                left join tbl_subcategory psc on psc.id = p.subcategory_id
                 join tbl_unit u on u.Unit_SlNo = p.Unit_ID
                 where sd.SaleMaster_IDNo = ?
             ", $data->salesId)->result();

@@ -1099,7 +1099,7 @@
 				this.sales.transportCost = isNaN(this.sales.transportCost) || this.sales.transportCost == '' ? 0 : this.sales.transportCost;
 				this.sales.discount = isNaN(this.sales.discount) || this.sales.discount == '' ? 0 : this.sales.discount;
 				this.discountPercent = isNaN(this.discountPercent) || this.discountPercent == '' ? 0 : this.discountPercent;
-				this.sales.paid = isNaN(this.sales.paid) || this.sales.paid == '' ? 0 : this.sales.paid;
+				// this.sales.paid = isNaN(this.sales.paid) || this.sales.paid == '' ? 0 : this.sales.paid;
 				this.sales.serviceCharge = isNaN(this.sales.serviceCharge) || this.sales.serviceCharge == '' ? 0 : this.sales.serviceCharge;
 
 				this.sales.total = ((parseFloat(this.sales.subTotal) + parseFloat(this.sales.vat) + parseFloat(this.sales.transportCost) + parseFloat(this.sales.serviceCharge)) - parseFloat(this.sales.discount)).toFixed(2);

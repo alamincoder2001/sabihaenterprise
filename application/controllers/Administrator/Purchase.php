@@ -48,10 +48,12 @@ class Purchase extends CI_Controller
                     p.ProductCategory_ID,
                     p.Product_SellingPrice,
                     pc.ProductCategory_Name,
+                    psc.name as subcategoryName,
                     u.Unit_Name
                 from tbl_purchasedetails pd 
                 join tbl_product p on p.Product_SlNo = pd.Product_IDNo
                 join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
+                left join tbl_subcategory psc on psc.id = p.subcategory_id
                 join tbl_unit u on u.Unit_SlNo = p.Unit_ID
                 where pd.PurchaseMaster_IDNo = '$data->purchaseId'
             ")->result();

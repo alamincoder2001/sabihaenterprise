@@ -231,6 +231,7 @@
 							<td>{{ row.Product_Code }}</td>
 							<td>{{ row.Product_Name }}</td>
 							<td>{{ row.ProductCategory_Name }}</td>
+							<td>{{ row.subcategoryName }}</td>
 							<td>{{ row.Product_Purchase_Rate }}</td>
 							<td>{{ row.Product_SellingPrice }}</td>
 							<td>{{ row.Product_WholesaleRate }}</td>
@@ -317,6 +318,11 @@
 					},
 					{
 						label: 'Category',
+						field: 'ProductCategory_Name',
+						align: 'center'
+					},
+					{
+						label: 'Sub Category',
 						field: 'ProductCategory_Name',
 						align: 'center'
 					},

@@ -38,14 +38,14 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-12 col-lg-12" style="border-bottom:1px #ccc solid;margin-bottom:5px;">
 			<div class="form-group" style="margin-top:10px;">
-				<label class="col-sm-1 col-sm-offset-1 control-label no-padding-right"> Select Serial </label>
-				<div class="col-sm-2"> 
+				<label class="col-xs-2 col-sm-offset-1 control-label no-padding-right"> Select Serial </label>
+				<div class="col-xs-3"> 
 					<v-select v-bind:options="serial_list" v-model="selectedSerial" label="ps_serial_number"></v-select>
 				</div>
             </div> 
          
 			<div class="form-group">
-				<div class="col-sm-2"  style="margin-left:15px;">
+				<div class="col-xs-2"  style="margin-left:15px;">
 					<input type="button" class="btn btn-primary" value="Show Report" v-on:click="getStock" style="margin-top:0px;border:0px;height:28px;">
 				</div>
 			</div>
