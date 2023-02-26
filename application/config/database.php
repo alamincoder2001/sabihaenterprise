@@ -10,7 +10,7 @@ $db['default'] = array(
 
 	'username' => 'root',
 	'password' => '',
-	'database' => 'sabiha_enterprise',
+	'database' => 'bigektuw_sabihaenterprise',
 
 
 	'dbdriver' => 'mysqli',
