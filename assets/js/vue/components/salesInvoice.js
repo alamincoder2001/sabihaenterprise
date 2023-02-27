@@ -67,9 +67,7 @@ const salesInvoice = Vue.component('sales-invoice', {
                             <thead>
                                 <tr>
                                     <td>Sl.</td>
-                                    <td>SubCategory</td>
                                     <td>Description</td>
-                                    <td>Category</td>
                                     <td>Quantity</td>
                                     <td>Unit</td>
                                     <td>Unit Price</td> 
@@ -80,15 +78,16 @@ const salesInvoice = Vue.component('sales-invoice', {
                             <tbody>
                                 <tr v-for="(product, sl) in cart">
                                     <td>{{ sl + 1 }}</td>
-                                    <td>{{product.subcategoryName}}</td>
-                                    <td>{{ product.Product_Name }} <br>
+                                    <td>
+                                        {{product.subcategoryName}}-
+                                        {{ product.Product_Name }} <br>
                                         <span v-if="product.serial.length > 0">
                                             (<span  v-for="serial in product.serial ">
                                                 {{serial.ps_serial_number}} <span>,</span>
                                             </span>)
                                         </span>
+                                        -{{product.ProductCategory_Name}}
                                     </td>
-                                    <td>{{product.ProductCategory_Name}}</td>
                                     <td>{{ product.SaleDetails_TotalQuantity }}</td>
                                     <td>{{ product.Unit_Name }}</td>
                                     <td>{{ product.SaleDetails_Rate }}</td>
