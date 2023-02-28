@@ -259,10 +259,10 @@
 									</div>
 								</div>
 
-								<div class="form-group" style="display: none;">
+								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"> Warranty <small>(Month)</small> </label>
 									<div class="col-sm-9">
-										<input type="number" v-model.number="selectedProduct.warranty" min="0" class="form-control" />
+										<input type="text" v-model="selectedProduct.warranty" class="form-control" />
 									</div>
 								</div>
 
@@ -302,7 +302,7 @@
 							<th style="width:7%;color:#000;">Qty</th>
 							<th style="width:8%;color:#000;">Rate</th>
 							<th style="width:15%;color:#000;">Total Amount</th>
-							<!-- <th style="width:10%;color:#000;">Warranty</th> -->
+							 <th style="width:10%;color:#000;">Warranty</th> 
 							<th style="width:5%;color:#000;">Action</th>
 						</tr>
 					</thead>
@@ -319,22 +319,22 @@
 							<td>{{ product.quantity }}</td>
 							<td>{{ product.salesRate }}</td>
 							<td>{{ product.total }}</td>
-							<!-- <td>{{ product.warranty }}</td> -->
+							<td>{{ product.warranty }}</td> 
 							<td><a href="" v-on:click.prevent="removeFromCart(sl)"><i class="fa fa-trash"></i></a></td>
 						</tr>
 
 						<tr>
-							<td colspan="7"></td>
+							<td colspan="8"></td>
 						</tr>
 
 						<tr style="font-weight: bold;">
 							<td colspan="5">Note</td>
-							<td colspan="2">Total</td>
+							<td colspan="3">Total</td>
 						</tr>
 
 						<tr>
 							<td colspan="5"><textarea style="width: 100%;font-size:13px;" placeholder="Note" v-model="sales.note"></textarea></td>
-							<td colspan="2" style="padding-top: 15px;font-size:18px;">{{ sales.total }}</td>
+							<td colspan="3" style="padding-top: 15px;font-size:18px;">{{ sales.total }}</td>
 						</tr>
 					</tbody>
 				</table>
