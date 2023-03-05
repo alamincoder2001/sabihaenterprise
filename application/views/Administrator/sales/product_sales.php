@@ -297,8 +297,9 @@
 					<thead>
 						<tr class="">
 							<th style="width:10%;color:#000;">Sl</th>
-							<th style="width:25%;color:#000;">Category</th>
-							<th style="width:20%;color:#000;">Product Name</th>
+							<th style="width:15%;color:#000;">Category</th>
+							<th style="width:15%;color:#000;">SubCategory</th>
+							<th style="width:25%;color:#000;">Product Name</th>
 							<th style="width:7%;color:#000;">Qty</th>
 							<th style="width:8%;color:#000;">Rate</th>
 							<th style="width:15%;color:#000;">Total Amount</th>
@@ -310,6 +311,7 @@
 						<tr v-for="(product, sl) in cart">
 							<td>{{ sl + 1 }}</td>
 							<td>{{ product.categoryName }}</td>
+							<td>{{ product.subcategoryName }}</td>
 							<td>
 								{{ product.name }}
 								<div v-if="product.SerialStore.length">
@@ -324,16 +326,16 @@
 						</tr>
 
 						<tr>
-							<td colspan="8"></td>
+							<td colspan="9"></td>
 						</tr>
 
 						<tr style="font-weight: bold;">
-							<td colspan="5">Note</td>
+							<td colspan="6">Note</td>
 							<td colspan="3">Total</td>
 						</tr>
 
 						<tr>
-							<td colspan="5"><textarea style="width: 100%;font-size:13px;" placeholder="Note" v-model="sales.note"></textarea></td>
+							<td colspan="6"><textarea style="width: 100%;font-size:13px;" placeholder="Note" v-model="sales.note"></textarea></td>
 							<td colspan="3" style="padding-top: 15px;font-size:18px;">{{ sales.total }}</td>
 						</tr>
 					</tbody>
@@ -929,6 +931,7 @@
 						product = {
 							productId: this.selectedProduct.Product_SlNo,
 							categoryName: this.selectedProduct.ProductCategory_Name,
+							subcategoryName: this.selectedProduct.subcategoryName,
 							name: this.selectedProduct.Product_Name,
 							salesRate: this.selectedProduct.Product_SellingPrice,
 							vat: this.selectedProduct.vat,
@@ -945,6 +948,7 @@
 						product = {
 							productId: this.selectedProduct.Product_SlNo,
 							categoryName: this.selectedProduct.ProductCategory_Name,
+							subcategoryName: this.selectedProduct.subcategoryName,
 							name: this.selectedProduct.Product_Name,
 							salesRate: this.selectedProduct.Product_SellingPrice,
 							vat: this.selectedProduct.vat,

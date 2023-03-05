@@ -348,6 +348,7 @@
 							<th style="width:4%;color:#000;">SL</th>
 							<th style="width:20%;color:#000;">Product Name</th>
 							<th style="width:13%;color:#000;">Category</th>
+							<th style="width:13%;color:#000;">SubCategory</th>
 							<th style="width:10%;color:#000;">Purchase Rate</th>
 							<th style="width:5%;color:#000;">Quantity</th>
 							<th style="width:13%;color:#000;">Total Amount</th>
@@ -364,6 +365,7 @@
 								</span>)
 							</td>
 							<td>{{ product.categoryName }}</td>
+							<td>{{ product.subcategoryName }}</td>
 							<td>{{ product.purchaseRate }}</td>
 							<td>{{ product.quantity }}</td>
 							<td>{{ product.total }}</td>
@@ -372,16 +374,16 @@
 						</tr>
 
 						<tr>
-							<td colspan="7"></td>
+							<td colspan="8"></td>
 						</tr>
 
 						<tr style="font-weight: bold;">
-							<td colspan="4">Note</td>
+							<td colspan="5">Note</td>
 							<td colspan="3">Total</td>
 						</tr>
 
 						<tr>
-							<td colspan="4"><textarea style="width: 100%;font-size:13px;" placeholder="Note" v-model="purchase.note"></textarea></td>
+							<td colspan="5"><textarea style="width: 100%;font-size:13px;" placeholder="Note" v-model="purchase.note"></textarea></td>
 							<td colspan="3" style="padding-top: 15px;font-size:18px;">{{ purchase.total }}</td>
 						</tr>
 					</tbody>
@@ -800,6 +802,7 @@
 					name: this.selectedProduct.Product_Name,
 					categoryId: this.selectedProduct.ProductCategory_ID,
 					categoryName: this.selectedProduct.ProductCategory_Name,
+					subcategoryName: this.selectedProduct.subcategoryName,
 					purchaseRate: this.selectedProduct.Product_Purchase_Rate,
 					salesRate: this.selectedProduct.Product_SellingPrice,
 					quantity: this.selectedProduct.quantity,
