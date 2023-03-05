@@ -1113,8 +1113,8 @@ class Purchase extends CI_Controller
                     p.Product_Name,
                     pc.ProductCategory_Name
                 from tbl_purchasedetails pd
-                join tbl_product p on p.Product_SlNo = pd.Product_IDNo
-                join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
+                left join tbl_product p on p.Product_SlNo = pd.Product_IDNo
+                left join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
                 where pd.PurchaseMaster_IDNo = ?
                 and pd.Status != 'd'
             ", $purchase->PurchaseMaster_SlNo)->result();
@@ -1217,8 +1217,8 @@ class Purchase extends CI_Controller
             $this->db->set('status', 'd')->where('PurchaseMaster_SlNo', $data->purchaseId)->update('tbl_purchasemaster');
 
             /*Product serial*/
-            $this->db->set('ps_status', 'd')->where('ps_purchase_inv', $purchase->PurchaseMaster_InvoiceNo)->update('tbl_product_serial_numbers');
-
+            // $this->db->set('ps_status', 'd')->where('ps_purchase_inv', $purchase->PurchaseMaster_InvoiceNo)->update('tbl_product_serial_numbers');
+            $this->db->query("DELETE FROM tbl_product_serial_numbers WHERE ps_purchase_inv ='$purchase->PurchaseMaster_InvoiceNo'");
             $this->db->trans_commit();
             $res = ['success' => true, 'message' => 'Successfully deleted'];
         } catch (Exception $ex) {

@@ -96,6 +96,7 @@ class Sales extends CI_Controller
                 ps_serial_number 
             from tbl_product_serial_numbers 
             where ps_brunch_id = ?
+            and ps_status != 'd'
             ", [$this->session->userdata('BRANCHid')])->result();
         echo json_encode($serialList);
     }

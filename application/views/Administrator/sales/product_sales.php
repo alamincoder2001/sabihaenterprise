@@ -790,7 +790,8 @@
 					isService: this.sales.isService
 				}).then(res => {
 					if (this.sales.salesType == 'wholesale') {
-						this.products = res.data.filter((product) => product.Product_WholesaleRate > 0);
+						// this.products = res.data.filter((product) => product.Product_WholesaleRate > 0);
+						this.products = res.data;
 						this.products.map((product) => {
 							return product.Product_SellingPrice = product.Product_WholesaleRate;
 						})

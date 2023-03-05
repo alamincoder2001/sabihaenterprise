@@ -128,7 +128,7 @@
 										<div class="col-sm-12" style="display: flex; margin-bottom: 5px;">
 											<input type="text" autocomplete="off" ref="serialnumberadd" id="serial_number" name="serial_number" v-model="get_serial_number" class="form-control" placeholder="Please Enter Serial Number" style="height: 30px;" />
 
-											<input type="submit" class="btn btn-sm primary" style="border: none; font-size: 13px; line-height: 0.38; margin-left: -1px; background-color: #42b983 !important;height: 29px; margin-left: 2px;" value="Add">
+											<input type="submit" :disabled="is_disabled == true ? true:false" class="btn btn-sm primary" style="border: none; font-size: 13px; line-height: 0.38; margin-left: -1px; background-color: #42b983 !important;height: 29px; margin-left: 2px;" value="Add">
 
 										</div>
 									</div>
@@ -586,6 +586,7 @@
 				is_sequence: false,
 				serial_cart: [],
 				SerialCartStore: [],
+				is_disabled: false,
 			}
 		},
 		created() {
@@ -631,25 +632,30 @@
 				this.serialModalStatus = false;
 			},
 			async serial_add_action() {
-
+				this.is_disabled = true;
+				
 				if (this.selectedProduct.Product_SlNo == '') {
 					alert("Please select a product");
+					this.is_disabled = false;
 					return;
 				}
 
 				if (this.selectedProduct.quantity <= 0 || this.selectedProduct.quantity == '' || this.selectedProduct.quantity == undefined) {
 					alert("Please enter valid Quantity");
+					this.is_disabled = false;
 					return;
 				}
 
 				if (this.selectedProduct.quantity <= this.serial_cart.length) {
 					alert(`Invalid Quantity !! You have maximum quantity is ${this.selectedProduct.quantity}.`);
 					this.get_serial_number = '';
+					this.is_disabled = false;
 					return;
 				}
 
 				if (this.get_serial_number.trim() == '') {
 					alert("Serial Number is Required.");
+					this.is_disabled = false;
 					return;
 				}
 
@@ -657,6 +663,7 @@
 
 				if (cartInd > -1) {
 					alert('Serial Number already exists in Serial List');
+					this.is_disabled = false;
 					return;
 				}
 
@@ -683,6 +690,7 @@
 					let uniqueCheck = await this.isSerialNumberUnique(prefixed + _serial)
 					if (uniqueCheck) {
 						alert(`Item '${_serial}' already purchased !!`)
+						this.is_disabled = false;
 						return
 					}
 
@@ -691,6 +699,7 @@
 							let uniqueCheck = await this.isSerialNumberUnique(prefixed + serial)
 							if (uniqueCheck) {
 								alert(`Sequence item '${prefixed}${serial}' already purchased !!`)
+								this.is_disabled = false;
 								return
 							}
 							let serialObj = {
@@ -707,6 +716,7 @@
 					let uniqueCheck = await this.isSerialNumberUnique(_serialNumber)
 					if (uniqueCheck) {
 						alert(`Item '${_serialNumber}' already purchased !!`)
+						this.is_disabled = false;
 						return
 					}
 					let serialObj = {
@@ -715,6 +725,7 @@
 					serialObj.serialNumber = _serialNumber;
 					this.serial_cart.push(serialObj);
 				}
+				this.is_disabled = false;
 
 				this.get_serial_number = '';
 
