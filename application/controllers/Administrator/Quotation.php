@@ -165,11 +165,13 @@ class Quotation extends CI_Controller
                     p.Product_Code,
                     p.Product_Name,
                     pc.ProductCategory_Name,
+                    pcn.name as subcategoryName,
                     u.Unit_Name
                 from tbl_quotation_details qd
                 join tbl_product p on p.Product_SlNo = qd.Product_IDNo
                 join tbl_unit u on u.Unit_SlNo = p.Unit_ID
                 join tbl_productcategory pc on pc.ProductCategory_SlNo = p.ProductCategory_ID
+                join tbl_subcategory pcn on pcn.id = p.subcategory_id
                 where qd.SaleMaster_IDNo = ?
             ", $data->quotationId)->result();
         }

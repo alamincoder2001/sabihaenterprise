@@ -321,7 +321,8 @@
 							<td>{{ product.quantity }}</td>
 							<td>{{ product.salesRate }}</td>
 							<td>{{ product.total }}</td>
-							<td>{{ product.warranty }}</td> 
+							<td v-if="qId != 0"><input type='text' v-model='product.warranty'></td>
+							<td v-else>{{ product.warranty }}</td>							
 							<td><a href="" v-on:click.prevent="removeFromCart(sl)"><i class="fa fa-trash"></i></a></td>
 						</tr>
 
@@ -742,7 +743,6 @@
 				await this.getSales();
 			}
 			if (this.qId != 0) {
-				// console.log(this.qId);
 				await this.getQuotations();
 			}
 		},
@@ -1185,9 +1185,6 @@
 					data.customer = this.selectedCustomer;
 				}
 
-				// console.log(data);
-				// return
-
 				axios.post(url, data).then(async res => {
 					let r = res.data;
 					if (r.success) {
@@ -1266,6 +1263,7 @@
 						let cartProduct = {
 							productId: product.Product_IDNo,
 							categoryName: product.ProductCategory_Name,
+							subcategoryName: product.subcategoryName,
 							name: product.Product_Name,
 							salesRate: product.SaleDetails_Rate,
 							vat: product.SaleDetails_Tax,
@@ -1335,6 +1333,7 @@
 					r.quotationDetails.forEach(product => {
 						let cartProduct = {
 							productId: product.Product_IDNo,
+							subcategoryName: product.subcategoryName,
 							categoryName: product.ProductCategory_Name,
 							name: product.Product_Name,
 							salesRate: product.SaleDetails_Rate,
@@ -1342,7 +1341,7 @@
 							quantity: product.SaleDetails_TotalQuantity,
 							total: product.SaleDetails_TotalAmount,
 							purchaseRate: product.Purchase_Rate,
-							// warranty: product.warranty,
+							warranty: product.warranty,
 							SerialStore: []
 						}
 
