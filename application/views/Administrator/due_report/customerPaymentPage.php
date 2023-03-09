@@ -63,82 +63,82 @@
 </style>
 <div id="customerPayment">
 	<div class="row" style="border-bottom: 1px solid #ccc;padding-bottom: 15px;margin-bottom: 15px;">
-		<div class="col-md-12">
+		<div class="col-lg-12 col-xs-12">
 			<form @submit.prevent="saveCustomerPayment">
 				<div class="row">
-					<div class="col-md-5 col-md-offset-1">
+					<div class="col-xs-12 col-lg-5 col-lg-offset-1">
 						<div class="form-group">
-							<label class="col-md-4 control-label">Transaction Type</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Transaction Type</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<select class="form-control" v-model="payment.CPayment_TransactionType" required>
-									<option value=""></option>
 									<option value="CR">Receive</option>
 									<option value="CP">Payment</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Payment Type</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Payment Type</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<select class="form-control" v-model="payment.CPayment_Paymentby" required>
 									<option value="cash">Cash</option>
 									<option value="bank">Bank</option>
 								</select>
 							</div>
 						</div>
-						<div class="form-group" style="display:none;" v-bind:style="{display: payment.CPayment_Paymentby == 'bank' ? '' : 'none'}">
-							<label class="col-md-4 control-label">Bank Account</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+						<div class="form-group" v-if="payment.CPayment_Paymentby == 'bank'">
+							<label class="col-xs-5 col-lg-4 control-label">Bank Account</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<v-select v-bind:options="filteredAccounts" v-model="selectedAccount" label="display_text" placeholder="Select account"></v-select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Customer</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-6 col-xs-11">
+							<label class="col-xs-5 col-lg-4 control-label">Customer</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-5 col-lg-6">
 								<select class="form-control" v-if="customers.length == 0"></select>
 								<v-select v-bind:options="customers" v-model="selectedCustomer" label="display_name" @input="getCustomerDue" v-if="customers.length > 0"></v-select>
 							</div>
-							<div class="col-md-1 col-xs-1" style="padding-left:0;margin-left: -3px;">
+							<div class="col-lg-1 col-xs-1" style="padding-left:0;margin-left: -3px;">
 								<a href="/customer" target="_blank" class="add-button"><i class="fa fa-plus"></i></a>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Due</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Due</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<input type="text" class="form-control" v-model="payment.CPayment_previous_due" disabled>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-5">
+					<div class="col-xs-12 col-lg-5">
 						<div class="form-group">
-							<label class="col-md-4 control-label">Payment Date</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Payment Date</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<input type="date" class="form-control" v-model="payment.CPayment_date" required @change="getCustomerPayments" v-bind:disabled="userType == 'u' ? true : false">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Description</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Description</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<input type="text" class="form-control" v-model="payment.CPayment_notes">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Amount</label>
-							<label class="col-md-1">:</label>
-							<div class="col-md-7">
+							<label class="col-xs-5 col-lg-4 control-label">Amount</label>
+							<label class="col-xs-1 col-lg-1">:</label>
+							<div class="col-xs-6 col-lg-7">
 								<input type="number" class="form-control" v-model="payment.CPayment_amount" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-md-7 col-md-offset-5">
+						<label class="col-xs-12 col-lg-5"></label>
+							<div class="col-xs-12 col-lg-7">
 								<input type="submit" class="btn btn-success btn-sm" :disabled="isProcess" value="Save">
 								<input type="button" class="btn btn-danger btn-sm" value="Cancel" @click="resetForm">
 							</div>
@@ -150,13 +150,13 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-12 form-inline">
+		<div class="col-xs-12 col-lg-12 form-inline">
 			<div class="form-group">
 				<label for="filter" class="sr-only">Filter</label>
 				<input type="text" class="form-control" v-model="filter" placeholder="Filter">
 			</div>
 		</div>
-		<div class="col-md-12">
+		<div class="col-lg-12">
 			<div class="table-responsive">
 				<datatable :columns="columns" :data="payments" :filter-by="filter" style="margin-bottom: 5px;">
 					<template scope="{ row }">

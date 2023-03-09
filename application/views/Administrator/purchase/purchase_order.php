@@ -182,23 +182,23 @@
 	<div class="col-xs-12 col-md-12 col-lg-12" style="border-bottom:1px #ccc solid;margin-bottom:5px;">
 		<div class="row">
 			<div class="form-group">
-				<label class="col-sm-1 control-label no-padding-right"> Invoice no </label>
-				<div class="col-sm-2">
-					<input type="text" id="invoice" name="invoice" v-model="purchase.invoice" readonly style="height:26px;" />
+				<label class="col-xs-4 col-lg-2 control-label"> Invoice no </label>
+				<div class="col-xs-8 col-lg-2">
+					<input type="text" id="invoice" name="invoice" v-model="purchase.invoice" readonly style="padding:2px 3px;width:100%;" />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-2 control-label no-padding-right"> Purchase For </label>
-				<div class="col-sm-3">
+				<label class="col-xs-4 col-lg-2 control-label"> Purchase For </label>
+				<div class="col-xs-8 col-lg-2">
 					<v-select id="branchDropdown" v-bind:options="branches" v-model="selectedBranch" label="Brunch_name" disabled></v-select>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label no-padding-right"> Date </label>
-				<div class="col-sm-3">
-					<input class="form-control" id="purchaseDate" name="purchaseDate" type="date" v-model="purchase.purchaseDate" v-bind:disabled="userType == 'u' ? true : false" style="border-radius: 5px 0px 0px 5px !important;padding: 4px 6px 4px !important;width: 230px;" />
+				<label class="col-xs-4 col-lg-2 control-label"> Date </label>
+				<div class="col-xs-8 col-lg-2">
+					<input class="form-control" id="purchaseDate" name="purchaseDate" type="date" v-model="purchase.purchaseDate" v-bind:disabled="userType == 'u' ? true : false" style="width: 100%;" />
 				</div>
 			</div>
 		</div>
@@ -222,7 +222,7 @@
 			<div class="widget-body">
 				<div class="widget-main">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-xs-12 col-lg-6">
 							<div class="form-group">
 								<label class="col-xs-4 control-label no-padding-right"> Supplier </label>
 								<div class="col-xs-7">
@@ -255,7 +255,7 @@
 							</div>
 						</div>
 
-						<div class="col-sm-6">
+						<div class="col-xs-12 col-lg-6">
 							<form v-on:submit.prevent="addToCart">
 								<div class="form-group">
 									<label class="col-xs-4 control-label no-padding-right"> Product </label>
@@ -429,10 +429,10 @@
 										<td>
 											<div class="form-group">
 												<label class="col-xs-12 control-label no-padding-right"> Vat </label>
-												<div class="col-xs-12">
-													<input type="number" id="vatPercent" name="vatPercent" v-model="vatPercent" min="0" v-on:input="calculateTotal" style="width:50px;height:25px;" />
-													<span style="width:20px;"> % </span>
-													<input type="number" id="vat" name="vat" v-model="purchase.vat" readonly style="width:140px;height:25px;" />
+												<div clsss="col-xs-12">													
+													<input type="number" id="vatPercent" name="vatPercent" v-model="vatPercent" min="0" v-on:input="calculateTotal" style="height:25px;margin-left: 12px;width: 38%;" />
+													<span> % </span>
+													<input type="number" id="vat" name="vat" v-model="purchase.vat" readonly style="height:25px;width: 42%;" />
 												</div>
 											</div>
 										</td>

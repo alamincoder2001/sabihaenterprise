@@ -112,28 +112,28 @@
 	<div class="col-xs-12 col-md-12 col-lg-12" style="border-bottom:1px #ccc solid;margin-bottom:5px;">
 		<div class="row">
 			<div class="form-group">
-				<label class="col-sm-1 control-label no-padding-right"> Invoice no </label>
-				<div class="col-sm-2">
+				<label class="col-xs-4 col-lg-1 control-label no-padding-right"> Invoice no </label>
+				<div class="col-xs-8 col-lg-2">
 					<input type="text" id="invoiceNo" class="form-control" v-model="sales.invoiceNo" readonly />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label no-padding-right"> Sales By </label>
-				<div class="col-sm-2">
+				<label class="col-xs-4 col-lg-1 control-label no-padding-right"> Sales By </label>
+				<div class="col-xs-8 col-lg-2">
 					<v-select v-bind:options="employees" v-model="selectedEmployee" label="Employee_Name" placeholder="Select Employee"></v-select>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label no-padding-right"> Sales From </label>
-				<div class="col-sm-2">
+				<label class="col-xs-4 col-lg-1 control-label no-padding-right"> Sales From </label>
+				<div class="col-xs-8 col-lg-2">
 					<v-select id="branchDropdown" v-bind:options="branches" label="Brunch_name" v-model="selectedBranch" disabled></v-select>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-3">
+				<div class="col-xs-12 col-lg-3">
 					<input class="form-control" id="salesDate" type="date" v-model="sales.salesDate" v-bind:disabled="userType == 'u' ? true : false" />
 				</div>
 			</div>
@@ -160,7 +160,7 @@
 				<div class="widget-main">
 
 					<div class="row">
-						<div class="col-sm-5">
+						<div class="col-xs-12 col-lg-5">
 							<div class="form-group clearfix" style="margin-bottom: 8px;">
 								<label class="col-xs-4 control-label no-padding-right"> Sales Type </label>
 								<div class="col-xs-8">
@@ -200,7 +200,7 @@
 							</div>
 						</div>
 
-						<div class="col-sm-5">
+						<div class="col-xs-12 col-lg-5">
 							<form v-on:submit.prevent="addToCart">
 								<div class="form-group">
 									<label class="col-xs-3 control-label no-padding-right"> Product </label>
@@ -213,13 +213,13 @@
 								</div>
 
 								<div class="form-group" style="display: none;" :style="{display: selectedProduct.is_serial == true ? '' : 'none'}">
-									<label class="col-sm-3 control-label no-padding-right"> Serial </label>
+									<label class="col-xs-3 control-label no-padding-right"> Serial </label>
 
-									<div class="col-sm-7" style="padding-right:15px">
+									<div class="col-xs-7" style="padding-right:15px">
 										<v-select v-if="!isProductFilterByBarcode" v-bind:options="serials" v-model="serial" label="ps_serial_number"></v-select>
 										<input v-else type="text" v-model="barcodeValue" placeholder="Barcode" ref="barcode" class="form-control" id="barcode">
 									</div>
-									<div class="col-sm-1" style="padding: 0;">
+									<div class="col-xs-1" style="padding: 0;">
 										<a href="#" @click.prevent="changeProductFilter" class="btn btn-xs btn-danger" style="height: 26px; border: 0; width: 28px; margin-left: -12px;" target="_blank" title="Add New Product"><i class="fa fa-barcode" aria-hidden="true" style="margin-top: 5px;"></i></a>
 									</div>
 									<div class="col-xs-1" style="padding: 0;">
@@ -260,8 +260,8 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"> Warranty <small>(Month)</small> </label>
-									<div class="col-sm-9">
+									<label class="col-xs-3 control-label no-padding-right"> Warranty <small>(Month)</small> </label>
+									<div class="col-xs-9">
 										<input type="text" v-model="selectedProduct.warranty" class="form-control" />
 									</div>
 								</div>
@@ -275,7 +275,7 @@
 							</form>
 
 						</div>
-						<div class="col-sm-2">
+						<div class="col-xs-12 col-lg-2">
 							<div style="display:none;" v-bind:style="{display:sales.isService == 'true' ? 'none' : ''}">
 								<div class="text-center" style="display:none;" v-bind:style="{color: productStock > 0 ? 'green' : 'red', display: selectedProduct.Product_SlNo == '' ? 'none' : ''}">{{ productStockText }}</div class="text-center">
 
@@ -562,18 +562,18 @@
 							<slot name="body">
 								<form @submit.prevent="addSerialNumber">
 									<div class="form-group">
-										<label for="serial" class="col-sm-3">Start Serial</label>
-										<div class="col-sm-9" style="display: flex; margin-bottom: 5px;">
+										<label for="serial" class="col-xs-3">Start Serial</label>
+										<div class="col-xs-9" style="display: flex; margin-bottom: 5px;">
 											<input type="text" autocomplete="off" ref="serialnumberadd" v-model="serialCart.range" class="form-control" placeholder="Please Enter Serial Number" style="height: 30px;" required />
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="quantity" class="col-sm-3">Range</label>
-										<div class="col-sm-6">
+										<label for="quantity" class="col-xs-3">Range</label>
+										<div class="col-xs-6">
 											<input type="number" autocomplete="off" min="0" v-model="serialCart.quantity" class="form-control" required>
 										</div>
-										<div class="col-sm-2">
-											<input type="submit" class="btn btn-sm primary" style="border: none; font-size: 13px; line-height: 0.38; background-color: #42b983 !important;height: 26px;width:76px;" value="Add">
+										<div class="col-xs-2">
+											<input type="submit" class="btn btn-xs primary" style="border: none; font-size: 13px; line-height: 0.38; background-color: #42b983 !important;height: 26px;width:76px;" value="Add">
 										</div>
 									</div>
 								</form>
@@ -792,9 +792,9 @@
 					if (this.sales.salesType == 'wholesale') {
 						// this.products = res.data.filter((product) => product.Product_WholesaleRate > 0);
 						this.products = res.data;
-						this.products.map((product) => {
-							return product.Product_SellingPrice = product.Product_WholesaleRate;
-						})
+						// this.products.map((product) => {
+						// 	return product.Product_SellingPrice = product.Product_WholesaleRate;
+						// })
 					} else {
 						this.products = res.data;
 					}
@@ -1053,7 +1053,7 @@
 						this.cart.push(product);
 					}
 
-					this.clearProduct();
+					// this.clearProduct();
 					this.serial = null;
 					this.barcodeValue = '';
 
