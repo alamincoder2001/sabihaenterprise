@@ -462,14 +462,15 @@
 				axios.post('/get_products', {
 					isService: this.quotation.isService
 				}).then(res => {
-					if (this.quotation.salesType == 'wholesale') {
-						this.products = res.data.filter((product) => product.Product_WholesaleRate > 0);
-						this.products.map((product) => {
-							return product.Product_SellingPrice = product.Product_WholesaleRate;
-						})
-					} else {
-						this.products = res.data;
-					}
+					// if (this.quotation.salesType == 'wholesale') {
+					// 	this.products = res.data.filter((product) => product.Product_WholesaleRate > 0);
+					// 	this.products.map((product) => {
+					// 		return product.Product_SellingPrice = product.Product_WholesaleRate;
+					// 	})
+					// } else {
+					// 	this.products = res.data;
+					// }
+					this.products = res.data;
 				})
 				// axios.get('/get_products').then(res => {
 				// 	this.products = res.data;
